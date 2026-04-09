@@ -1,0 +1,2841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FNP — Complete UX/UI Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g0:#0A2E0A; --g1:#1B5E20; --g2:#2E7D32; --g3:#4CAF50; --g4:#A5D6A7; --g5:#E8F5E9; --g6:#F1F8F1;
+  --gold:#B8860B; --gold2:#D4A017; --gold3:#FDF3DC;
+  --rose:#AD1457; --rose2:#E91E8C; --rose3:#FCE4EC;
+  --ink:#0F0F0F; --ink2:#2C2C2C; --ink3:#5A5A5A; --ink4:#9E9E9E;
+  --cream:#FAF8F4; --cream2:#F2EDE4; --sand:#E8E0D4;
+  --white:#FFFFFF;
+  --r4:4px; --r8:8px; --r12:12px; --r16:16px; --r24:24px; --r32:32px;
+  --shadow-xs:0 1px 4px rgba(0,0,0,.06);
+  --shadow-sm:0 2px 12px rgba(0,0,0,.08);
+  --shadow-md:0 4px 24px rgba(0,0,0,.10);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.14);
+  --shadow-xl:0 16px 64px rgba(0,0,0,.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO HEADER
+═══════════════════════════════════════════════ */
+.site-header {
+  background: var(--g0);
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.logo span { color: var(--gold2); }
+
+.nav-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-pill {
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.7);
+  background: transparent;
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.nav-pill:hover { background: rgba(255,255,255,.1); color: white; }
+.nav-pill.active { background: var(--gold2); color: var(--g0); border-color: var(--gold2); }
+
+.doc-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════════════════ */
+.page-hero {
+  background: var(--g0);
+  padding: 60px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(27,94,32,.6) 0%, transparent 70%);
+}
+
+.page-hero::after {
+  content: 'FNP';
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 300px;
+  font-weight: 700;
+  color: rgba(255,255,255,.02);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero-title em { color: var(--gold2); font-style: italic; }
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.55);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+  position: relative;
+}
+
+.feature-count-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  position: relative;
+}
+
+.fc-item { text-align: center; }
+.fc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--gold2);
+  line-height: 1;
+}
+.fc-label { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 4px; text-transform: uppercase; letter-spacing: .06em; }
+
+/* ═══════════════════════════════════════════════
+   SECTION WRAPPER
+═══════════════════════════════════════════════ */
+.section { display: none; padding: 60px 40px; max-width: 1400px; margin: 0 auto; }
+.section.active { display: block; }
+.section-wrap { max-width: 1400px; margin: 0 auto; }
+
+.section-title-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--sand);
+}
+
+.section-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 600;
+  color: var(--sand);
+  line-height: .85;
+  flex-shrink: 0;
+}
+
+.section-meta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--g1);
+  line-height: 1.1;
+}
+
+.section-meta p {
+  font-size: 14px;
+  color: var(--ink3);
+  margin-top: 6px;
+}
+
+.feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--g5);
+  color: var(--g1);
+  border: 1px solid var(--g4);
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════
+   PHONE FRAME SYSTEM
+═══════════════════════════════════════════════ */
+.screens-canvas {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  position: relative;
+}
+
+.screen-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.screen-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  text-align: center;
+}
+
+/* Phone shell */
+.phone {
+  width: 300px;
+  background: var(--white);
+  border-radius: 42px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 8px var(--ink2),
+    0 0 0 10px #444,
+    var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.phone.tall { min-height: 660px; }
+.phone.short { min-height: 560px; }
+
+.status {
+  background: var(--g1);
+  padding: 10px 24px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.status-notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 88px; height: 22px;
+  background: var(--ink2);
+  border-radius: 0 0 16px 16px;
+}
+
+.status-time { font-size: 12px; font-weight: 700; color: white; }
+.status-icons { font-size: 10px; color: rgba(255,255,255,.8); letter-spacing: 2px; }
+
+.topbar {
+  background: var(--g1);
+  padding: 10px 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.topbar-back { font-size: 20px; color: rgba(255,255,255,.8); cursor: pointer; }
+.topbar-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: white; flex: 1; }
+.topbar-action { font-size: 16px; color: rgba(255,255,255,.7); cursor: pointer; }
+
+.scrollarea {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--cream);
+  scrollbar-width: none;
+}
+.scrollarea::-webkit-scrollbar { display: none; }
+
+.btmnav {
+  background: white;
+  border-top: 1px solid #f0ece6;
+  padding: 8px 4px 18px;
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 0;
+}
+
+.bni {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink4);
+  letter-spacing: .02em;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.bni.on { color: var(--g1); }
+.bni .ic { font-size: 20px; line-height: 1; }
+
+/* ═══════════════════════════════════════════════
+   ANNOTATION SIDEBAR
+═══════════════════════════════════════════════ */
+.anno-col {
+  flex: 1;
+  padding: 20px 24px;
+  min-width: 0;
+}
+
+.anno-col.left { padding-right: 32px; }
+.anno-col.right { padding-left: 32px; }
+
+.anno {
+  background: var(--white);
+  border-radius: var(--r12);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--g3);
+  position: relative;
+}
+
+.anno.gold { border-left-color: var(--gold2); }
+.anno.rose { border-left-color: var(--rose); }
+
+.anno-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--g2);
+  margin-bottom: 6px;
+}
+
+.anno.gold .anno-tag { color: var(--gold); }
+.anno.rose .anno-tag { color: var(--rose); }
+
+.anno p { font-size: 12px; color: var(--ink3); line-height: 1.6; }
+
+.spec-card {
+  background: var(--white);
+  border-radius: var(--r16);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: 40px;
+}
+
+.spec-card-head {
+  background: var(--g1);
+  color: white;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-row {
+  display: flex;
+  border-bottom: 1px solid #f5f2ee;
+  font-size: 12px;
+}
+
+.spec-row:last-child { border-bottom: none; }
+
+.spec-k {
+  width: 44%;
+  padding: 10px 16px;
+  background: var(--g6);
+  font-weight: 600;
+  color: var(--g1);
+  flex-shrink: 0;
+}
+
+.spec-v {
+  padding: 10px 16px;
+  color: var(--ink2);
+  flex: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   UI COMPONENTS — in-phone
+═══════════════════════════════════════════════ */
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--r16);
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: var(--shadow-xs);
+}
+
+.card-header {
+  padding: 12px 14px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.see-all { font-size: 11px; color: var(--g2); font-weight: 600; cursor: pointer; }
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: var(--r12);
+  padding: 13px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: .01em;
+  transition: transform .1s;
+}
+.btn:active { transform: scale(.98); }
+.btn-green { background: var(--g1); color: white; }
+.btn-outline-g { background: transparent; border: 1.5px solid var(--g1); color: var(--g1); }
+.btn-gold { background: var(--gold2); color: white; }
+.btn-rose { background: var(--rose); color: white; }
+.btn-sm { padding: 7px 14px; font-size: 11px; border-radius: 8px; }
+
+/* Tags / badges */
+.tag {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+.tag-green { background: var(--g5); color: var(--g1); border: 1px solid var(--g4); }
+.tag-gold { background: var(--gold3); color: var(--gold); border: 1px solid #E8C97A; }
+.tag-rose { background: var(--rose3); color: var(--rose); border: 1px solid #F48FB1; }
+.tag-dark { background: var(--ink2); color: white; }
+
+/* ── FNP App Header ── */
+.app-header {
+  background: var(--g1);
+  padding: 14px 16px 16px;
+}
+
+.app-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.app-logo span { color: var(--gold2); }
+
+.search-bar {
+  background: rgba(255,255,255,.15);
+  border-radius: 24px;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.search-bar-text { font-size: 12px; color: rgba(255,255,255,.6); flex: 1; }
+.search-bar-icon { font-size: 14px; color: rgba(255,255,255,.5); }
+
+/* ── Hero banners ── */
+.hero-banner {
+  padding: 18px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hb-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; opacity: .7; }
+.hb-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 5px; }
+.hb-sub { font-size: 11px; line-height: 1.5; opacity: .8; margin-bottom: 12px; }
+
+/* ═══════════════════════════════════════════════
+   FEATURE-SPECIFIC STYLES
+═══════════════════════════════════════════════ */
+
+/* QR VIDEO */
+.product-img-area {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  position: relative;
+  background: linear-gradient(135deg, var(--g5) 0%, #C8E6C9 100%);
+}
+
+.product-img-area .tag-overlay {
+  position: absolute;
+  top: 10px; right: 10px;
+}
+
+.addon-strip {
+  margin: 0 10px 10px;
+  background: var(--gold3);
+  border: 1.5px dashed var(--gold2);
+  border-radius: var(--r16);
+  padding: 12px;
+}
+
+.addon-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.addon-icon { font-size: 24px; }
+
+.addon-price-pill {
+  background: var(--gold2);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+.upload-zone {
+  background: white;
+  border: 1.5px dashed #C8B487;
+  border-radius: var(--r12);
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-zone .uicon { font-size: 30px; margin-bottom: 6px; }
+.upload-zone .ut { font-size: 12px; font-weight: 600; color: var(--g1); }
+.upload-zone .us { font-size: 10px; color: var(--ink4); margin-top: 2px; }
+
+.qr-row {
+  margin: 0 10px 10px;
+  background: white;
+  border-radius: var(--r12);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-xs);
+}
+
+.qr-chip {
+  width: 72px; height: 72px;
+  background: var(--ink);
+  border-radius: var(--r8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* VIDEO PLAYER PAGE */
+.vp-hero {
+  background: var(--ink);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.vp-play {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,.3);
+}
+
+.vp-thumbnail { position: absolute; inset: 0; font-size: 60px; display: flex; align-items: center; justify-content: center; opacity: .3; }
+
+/* LIVE TRACKING */
+.map-frame {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  background: #EDF5EA;
+}
+
+.map-grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(27,94,32,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(27,94,32,.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.map-road { position: absolute; background: rgba(255,255,255,.9); }
+.mr-h { left: 0; right: 0; height: 7px; border-radius: 4px; }
+.mr-v { top: 0; bottom: 0; width: 7px; border-radius: 4px; }
+
+.map-pin { position: absolute; font-size: 24px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); }
+.pin-rider { animation: rider-bounce 1.8s ease-in-out infinite; }
+
+@keyframes rider-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.map-eta-chip {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  background: white;
+  border-radius: var(--r8);
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  color: var(--g1);
+}
+
+.eta-hero {
+  background: var(--g1);
+  padding: 14px 16px;
+  color: white;
+}
+
+.eta-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.live-dot {
+  width: 8px; height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  position: relative;
+}
+
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid #4CAF50;
+  animation: ping 1.5s infinite;
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: .8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.eta-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.eta-sub { font-size: 11px; opacity: .7; margin-top: 2px; }
+
+.eta-pill {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.timeline-steps { padding: 12px 14px; }
+
+.t-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.t-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 12px; top: 24px; bottom: 0;
+  width: 2px;
+  background: var(--sand);
+}
+
+.t-step.done::after { background: var(--g3); }
+
+.t-dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--sand);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.t-step.done .t-dot { background: var(--g1); color: white; }
+.t-step.active .t-dot { background: var(--gold2); color: white; animation: pulse-dot 2s infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,11,.4); }
+  50% { box-shadow: 0 0 0 6px rgba(184,134,11,0); }
+}
+
+.t-info h5 { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.t-info p { font-size: 10px; color: var(--ink4); }
+
+.rider-card {
+  background: white;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #f5f0ea;
+}
+
+.rider-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--g5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+
+.rider-actions { display: flex; gap: 6px; margin-left: auto; }
+
+.ic-btn {
+  width: 34px; height: 34px;
+  background: var(--g5);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+/* MIDNIGHT SLOT */
+.dark-slot-card {
+  margin: 10px;
+  background: var(--ink2);
+  border-radius: var(--r16);
+  padding: 16px;
+  color: white;
+}
+
+.slot-tabs {
+  display: flex;
+  background: rgba(255,255,255,.1);
+  border-radius: var(--r12);
+  padding: 3px;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.slot-tab {
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: var(--r8);
+  border: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  color: rgba(255,255,255,.5);
+  background: transparent;
+  text-align: center;
+  line-height: 1.4;
+  transition: all .2s;
+}
+
+.slot-tab.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+/* AI ASSISTANT */
+.ai-bar {
+  background: linear-gradient(135deg, var(--g0) 0%, var(--g1) 100%);
+  padding: 14px 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-bar::before {
+  content: '✦';
+  position: absolute;
+  right: 12px; top: 8px;
+  font-size: 36px;
+  opacity: .08;
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+.chat-wrap {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.msg {
+  max-width: 86%;
+  padding: 9px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.msg.bot {
+  background: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+  box-shadow: var(--shadow-xs);
+  color: var(--ink);
+}
+
+.msg.user {
+  background: var(--g1);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+
+.bot-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.bot-avatar {
+  width: 18px; height: 18px;
+  background: var(--g1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+  color: white;
+}
+
+.bot-name { font-size: 9px; font-weight: 700; color: var(--ink4); text-transform: uppercase; letter-spacing: .05em; }
+
+.reco-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 12px 8px;
+  scrollbar-width: none;
+}
+.reco-scroll::-webkit-scrollbar { display: none; }
+
+.reco-item {
+  flex-shrink: 0;
+  width: 104px;
+  background: white;
+  border-radius: var(--r12);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  transition: transform .15s;
+}
+.reco-item:active { transform: scale(.97); }
+
+.reco-thumb { height: 76px; display: flex; align-items: center; justify-content: center; font-size: 34px; }
+
+.reco-body { padding: 7px 8px 8px; }
+.reco-name { font-size: 11px; font-weight: 600; margin-bottom: 2px; color: var(--ink); }
+.reco-price { font-size: 11px; font-weight: 700; color: var(--g1); }
+
+.chips-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 12px 10px;
+  scrollbar-width: none;
+}
+.chips-row::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex-shrink: 0;
+  background: var(--g5);
+  color: var(--g1);
+  border: 1px solid var(--g4);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ai-input-row {
+  padding: 8px 12px;
+  background: white;
+  border-top: 1px solid #f0ece6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ai-inp {
+  flex: 1;
+  background: var(--cream);
+  border: 1.5px solid var(--sand);
+  border-radius: 24px;
+  padding: 8px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  color: var(--ink);
+  outline: none;
+}
+
+.ai-send {
+  width: 34px; height: 34px;
+  background: var(--g1);
+  border-radius: 50%;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* CARE/PERIOD */
+.care-hero-area {
+  background: linear-gradient(160deg, #FCE4EC 0%, #F8BBD9 50%, #FCE4EC 100%);
+  padding: 22px 16px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.care-hero-area::after {
+  content: '♡';
+  position: absolute;
+  right: 8px; bottom: -20px;
+  font-size: 100px;
+  color: rgba(173,20,87,.07);
+  pointer-events: none;
+}
+
+.care-pkg-item {
+  background: white;
+  border-radius: var(--r16);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 10px 8px;
+  box-shadow: var(--shadow-xs);
+}
+
+.care-pkg-thumb {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.care-pkg-details { flex: 1; }
+.care-pkg-details h4 { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.care-pkg-details p { font-size: 10px; color: var(--ink4); margin-bottom: 4px; }
+
+.care-pkg-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.care-price { font-size: 13px; font-weight: 700; color: var(--rose); }
+
+.care-add { background: var(--rose); color: white; border: none; border-radius: 8px; padding: 5px 12px; font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+.schedule-strip {
+  margin: 0 10px 10px;
+  background: var(--rose);
+  border-radius: var(--r16);
+  padding: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.schedule-strip .icon { font-size: 28px; flex-shrink: 0; }
+.schedule-strip h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.schedule-strip p { font-size: 10px; opacity: .8; }
+
+/* PRODUCT DETAIL */
+.prod-img-hero {
+  height: 200px;
+  background: linear-gradient(135deg, var(--g5) 0%, #DCEDC8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 90px;
+  position: relative;
+}
+
+.prod-img-hero .wishlist {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 36px; height: 36px;
+  background: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.prod-actions { display: flex; gap: 8px; padding: 0 12px 14px; }
+
+/* HOMEPAGE */
+.occasion-strip {
+  background: white;
+  padding: 12px 14px;
+}
+
+.occasion-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.occasion-row::-webkit-scrollbar { display: none; }
+
+.occ-item {
+  flex-shrink: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.occ-circle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 5px;
+}
+
+.occ-label { font-size: 9px; font-weight: 700; color: var(--ink3); letter-spacing: .02em; }
+
+/* WISHR FEATURE */
+.wishr-hero {
+  background: linear-gradient(135deg, var(--g0) 0%, #1A3D1A 100%);
+  padding: 20px 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.wishr-hero::before {
+  content: '★';
+  position: absolute;
+  right: 12px; top: -10px;
+  font-size: 120px;
+  opacity: .04;
+}
+
+.reminder-card {
+  background: white;
+  border-radius: var(--r16);
+  padding: 14px;
+  margin: 0 10px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-xs);
+}
+
+.reminder-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.reminder-info h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.reminder-info p { font-size: 11px; color: var(--ink4); }
+.reminder-days { margin-left: auto; text-align: right; flex-shrink: 0; }
+.rd-num { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--g1); line-height: 1; }
+.rd-label { font-size: 9px; color: var(--ink4); text-transform: uppercase; letter-spacing: .04em; }
+
+/* LOYALTY/REWARDS */
+.loyalty-hero {
+  background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
+  padding: 20px 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.loyalty-hero::before {
+  content: '✦';
+  position: absolute;
+  right: -10px; bottom: -20px;
+  font-size: 120px;
+  opacity: .08;
+}
+
+.points-display {
+  text-align: center;
+  padding: 20px 16px;
+  background: white;
+}
+
+.pts-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.pts-label { font-size: 12px; color: var(--ink4); margin-top: 4px; }
+
+.reward-item {
+  background: white;
+  border-radius: var(--r16);
+  padding: 14px;
+  margin: 0 10px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-xs);
+  border: 1.5px solid transparent;
+  transition: border-color .2s;
+}
+
+.reward-item:hover { border-color: var(--gold2); }
+
+.reward-icon { font-size: 28px; flex-shrink: 0; }
+.reward-info { flex: 1; }
+.reward-info h4 { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.reward-info p { font-size: 10px; color: var(--ink4); }
+.reward-pts { font-size: 12px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+
+
+/* GROUP GIFTING */
+.group-hero {
+  background: linear-gradient(135deg, #1A237E 0%, #283593 100%);
+  padding: 20px 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.contributor-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: white;
+  border-radius: var(--r12);
+  margin: 0 10px 6px;
+  box-shadow: var(--shadow-xs);
+}
+
+.c-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.c-name { font-size: 12px; font-weight: 600; flex: 1; }
+.c-amount { font-size: 12px; font-weight: 700; color: var(--g1); }
+.c-status { font-size: 10px; color: var(--ink4); }
+
+.progress-bar-wrap {
+  margin: 0 10px 10px;
+  background: white;
+  border-radius: var(--r12);
+  padding: 14px;
+  box-shadow: var(--shadow-xs);
+}
+
+.prog-track {
+  height: 10px;
+  background: var(--sand);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--g1), var(--g3));
+  border-radius: 5px;
+  transition: width 1s ease;
+}
+
+/* SECTION TABS */
+.section-outer { background: var(--cream); }
+
+/* Feature detail layout grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 220px auto 220px;
+  gap: 0;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .feature-grid { grid-template-columns: 180px auto 180px; }
+  .phone { width: 270px; }
+}
+
+@media (max-width: 900px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .anno-col { display: none; }
+  .section { padding: 40px 20px; }
+  .site-header { padding: 0 20px; }
+  .page-hero { padding: 40px 20px 60px; }
+}
+
+.phones-flex {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Typing indicator */
+.typing {
+  display: flex;
+  gap: 3px;
+  padding: 2px 0;
+}
+
+.typing span {
+  width: 5px; height: 5px;
+  background: var(--ink4);
+  border-radius: 50%;
+  animation: typedot 1.2s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes typedot {
+  0%, 80%, 100% { opacity: .3; transform: scale(.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+/* Bottom sheet style card */
+.bottom-sheet {
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 16px;
+  margin-top: auto;
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--sand);
+  border-radius: 2px;
+  margin: 0 auto 14px;
+}
+
+/* Notification */
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: white;
+  border-bottom: 1px solid #f5f0ea;
+}
+
+.notif-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--r8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.notif-body h5 { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.notif-body p { font-size: 11px; color: var(--ink4); line-height: 1.4; }
+.notif-time { font-size: 10px; color: var(--ink4); margin-left: auto; flex-shrink: 0; }
+
+/* ═══ ALL SECTIONS CONTAINER ═══ */
+.all-sections-wrap {
+  background: var(--cream);
+}
+
+/* Divider between feature sections */
+.feature-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sand) 20%, var(--sand) 80%, transparent);
+  margin: 0 40px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">🌸 F<span>N</span>P</div>
+    <div class="nav-pills">
+      <button class="nav-pill active" onclick="showSection('overview')">Overview</button>
+      <button class="nav-pill" onclick="showSection('qr')">QR Video</button>
+      <button class="nav-pill" onclick="showSection('tracking')">Live Tracking</button>
+      <button class="nav-pill" onclick="showSection('ai')">AI Assistant</button>
+      <button class="nav-pill" onclick="showSection('care')">Care Gifting</button>
+      <button class="nav-pill" onclick="showSection('reminders')">Reminders</button>
+      <button class="nav-pill" onclick="showSection('loyalty')">Loyalty</button>
+      <button class="nav-pill" onclick="showSection('group')">Group Gifting</button>
+    </div>
+    <div class="doc-badge">APM Design System</div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-eyebrow">Ferns N Petals · Associate Product Manager</div>
+  <h1 class="hero-title">Complete <em>UI/UX</em> Design System</h1>
+  <p class="hero-sub">Every screen, every flow, every interaction. A full product design language for FNP's next generation of features.</p>
+  <div class="feature-count-row">
+    <div class="fc-item"><div class="fc-num">7</div><div class="fc-label">Features</div></div>
+    <div class="fc-item"><div class="fc-num">24+</div><div class="fc-label">Screens</div></div>
+    <div class="fc-item"><div class="fc-num">100%</div><div class="fc-label">Interactive</div></div>
+    <div class="fc-item"><div class="fc-num">1</div><div class="fc-label">Design System</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     OVERVIEW — 3 PHONE OVERVIEW
+══════════════════════════════════════════ -->
+<div id="sec-overview" class="section-outer">
+<div class="section active" id="section-overview">
+  <div class="section-title-row">
+    <div class="section-num">01</div>
+    <div class="section-meta">
+      <h2>App Design Overview</h2>
+      <p>Home screen · Product flow · My Orders</p>
+      <span class="feature-badge">🏠 Core App Shell</span>
+    </div>
+  </div>
+
+  <div class="phones-flex">
+
+    <!-- SCREEN: Homepage -->
+    <div class="screen-col">
+      <div class="screen-label">Home Screen</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="scrollarea">
+          <div class="app-header">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div class="app-logo">🌸 F<span>N</span>P</div>
+              <div style="display:flex;gap:10px;font-size:20px;color:rgba(255,255,255,.8);">🔔 🛒</div>
+            </div>
+            <div class="search-bar">
+              <span style="font-size:14px;color:rgba(255,255,255,.6);">✦</span>
+              <span class="search-bar-text">Ask me to find the perfect gift...</span>
+              <span class="search-bar-icon">🎙️</span>
+            </div>
+          </div>
+
+          <!-- Occasion strip -->
+          <div class="occasion-strip">
+            <div class="occasion-row">
+              <div class="occ-item"><div class="occ-circle" style="background:#E8F5E9;">🎂</div><div class="occ-label">Birthday</div></div>
+              <div class="occ-item"><div class="occ-circle" style="background:#FCE4EC;">💍</div><div class="occ-label">Anniversary</div></div>
+              <div class="occ-item"><div class="occ-circle" style="background:#FDF3DC;">🌻</div><div class="occ-label">Just Because</div></div>
+              <div class="occ-item"><div class="occ-circle" style="background:#EDE7F6;">🕯️</div><div class="occ-label">Comfort</div></div>
+              <div class="occ-item"><div class="occ-circle" style="background:#E3F2FD;">🌸</div><div class="occ-label">Care</div></div>
+              <div class="occ-item"><div class="occ-circle" style="background:#FFF8E1;">🎓</div><div class="occ-label">Congrats</div></div>
+            </div>
+          </div>
+
+          <!-- Hero banner -->
+          <div style="margin:10px;" >
+            <div style="background:linear-gradient(135deg,var(--g0),var(--g1));border-radius:var(--r16);padding:18px;color:white;position:relative;overflow:hidden;cursor:pointer;">
+              <div style="position:absolute;right:-8px;top:-8px;font-size:80px;opacity:.08;">✦</div>
+              <div style="font-size:9px;font-weight:700;opacity:.6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;">AI POWERED</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:4px;">Not sure what to gift?</div>
+              <div style="font-size:11px;opacity:.75;margin-bottom:12px;">Just tell me the occasion, mood & budget</div>
+              <button style="background:var(--gold2);color:var(--g0);border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Try Gift Assistant ✦</button>
+            </div>
+          </div>
+
+          <!-- Bestsellers row -->
+          <div class="card" style="margin:10px;">
+            <div class="card-header"><div class="card-title">Bestsellers Today</div><span class="see-all">See all</span></div>
+            <div style="display:flex;gap:8px;padding:10px;overflow-x:auto;scrollbar-width:none;">
+              <div style="flex-shrink:0;width:100px;background:var(--cream);border-radius:12px;overflow:hidden;">
+                <div style="height:76px;background:var(--g5);display:flex;align-items:center;justify-content:center;font-size:34px;">💐</div>
+                <div style="padding:7px 8px;">
+                  <div style="font-size:11px;font-weight:600;margin-bottom:2px;">Rose Bouquet</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);">₹899</div>
+                </div>
+              </div>
+              <div style="flex-shrink:0;width:100px;background:var(--cream);border-radius:12px;overflow:hidden;">
+                <div style="height:76px;background:#FFF8E7;display:flex;align-items:center;justify-content:center;font-size:34px;">🎂</div>
+                <div style="padding:7px 8px;">
+                  <div style="font-size:11px;font-weight:600;margin-bottom:2px;">Choco Cake</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);">₹649</div>
+                </div>
+              </div>
+              <div style="flex-shrink:0;width:100px;background:var(--cream);border-radius:12px;overflow:hidden;">
+                <div style="height:76px;background:#FCE4EC;display:flex;align-items:center;justify-content:center;font-size:34px;">🧸</div>
+                <div style="padding:7px 8px;">
+                  <div style="font-size:11px;font-weight:600;margin-bottom:2px;">Teddy Bear</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);">₹549</div>
+                </div>
+              </div>
+              <div style="flex-shrink:0;width:100px;background:var(--cream);border-radius:12px;overflow:hidden;">
+                <div style="height:76px;background:#EDE7F6;display:flex;align-items:center;justify-content:center;font-size:34px;">🪴</div>
+                <div style="padding:7px 8px;">
+                  <div style="font-size:11px;font-weight:600;margin-bottom:2px;">Lucky Plant</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);">₹449</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming reminders strip -->
+          <div style="margin:0 10px 10px;background:linear-gradient(135deg,var(--g0),var(--g1));border-radius:var(--r16);padding:14px;color:white;display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <div style="font-size:28px;">⏰</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;margin-bottom:2px;">3 occasions coming up</div>
+              <div style="font-size:11px;opacity:.7;">Priya's birthday in 5 days</div>
+            </div>
+            <div style="margin-left:auto;font-size:16px;opacity:.6;">›</div>
+          </div>
+
+          <div style="height:16px;"></div>
+        </div>
+        <div class="btmnav">
+          <div class="bni on"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+          <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN: Product Detail -->
+    <div class="screen-col">
+      <div class="screen-label">Product Detail</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar">
+          <span class="topbar-back">←</span>
+          <span class="topbar-title">Product Details</span>
+          <span class="topbar-action">⋯</span>
+        </div>
+        <div class="scrollarea">
+          <div class="prod-img-hero">
+            💐
+            <div class="wishlist">♡</div>
+            <div style="position:absolute;top:12px;left:14px;"><span class="tag tag-dark">BESTSELLER</span></div>
+          </div>
+          <div style="background:white;padding:14px 14px 12px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--ink);margin-bottom:3px;">Sunrise Delight Bouquet</div>
+            <div style="font-size:11px;color:var(--ink4);margin-bottom:10px;">Mixed roses · Same-day delivery available</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <div style="font-size:20px;font-weight:700;color:var(--g1);">₹1,299</div>
+              <div style="font-size:12px;color:var(--ink4);text-decoration:line-through;">₹1,599</div>
+              <span class="tag tag-green">19% OFF</span>
+            </div>
+            <div style="display:flex;gap:6px;margin-bottom:12px;">
+              <span class="tag tag-green">🚀 Same day</span>
+              <span class="tag tag-gold">⭐ 4.8 (2.1k)</span>
+              <span class="tag" style="background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9;">🌿 Fresh</span>
+            </div>
+          </div>
+
+          <!-- Video addon -->
+          <div class="addon-strip">
+            <div class="addon-header">
+              <span class="addon-icon">🎥</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--ink);">Add Video Message</div>
+                <div style="font-size:10px;color:var(--ink4);">QR code on gift — recipient scans to play</div>
+              </div>
+              <span class="addon-price-pill">+₹79</span>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:2px;">
+              <button style="flex:1;padding:8px;background:var(--gold2);color:white;border:none;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Add Video ✦</button>
+              <button style="flex:1;padding:8px;background:white;color:var(--gold);border:1.5px solid var(--gold2);border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Maybe Later</button>
+            </div>
+          </div>
+
+          <!-- Delivery slot preview -->
+          <div class="card" style="margin:10px;">
+            <div style="padding:12px 14px;">
+              <div style="font-size:11px;font-weight:700;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;">Choose Delivery</div>
+              <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:8px;">
+                <div style="flex-shrink:0;text-align:center;background:var(--g1);color:white;border-radius:10px;padding:8px 14px;">
+                  <div style="font-size:9px;opacity:.7;">TODAY</div>
+                  <div style="font-size:14px;font-weight:700;">15</div>
+                  <div style="font-size:9px;opacity:.7;">JUL</div>
+                </div>
+                <div style="flex-shrink:0;text-align:center;border:1.5px solid var(--sand);border-radius:10px;padding:8px 14px;color:var(--ink4);">
+                  <div style="font-size:9px;">TOM</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--ink);">16</div>
+                  <div style="font-size:9px;">JUL</div>
+                </div>
+                <div style="flex-shrink:0;text-align:center;border:1.5px solid var(--sand);border-radius:10px;padding:8px 14px;color:var(--ink4);">
+                  <div style="font-size:9px;">WED</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--ink);">17</div>
+                  <div style="font-size:9px;">JUL</div>
+                </div>
+              </div>
+              <div style="background:var(--g5);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+                <div><div style="font-size:12px;font-weight:600;">9 AM – 1 PM</div><div style="font-size:10px;color:var(--ink4);">Free delivery</div></div>
+                <div style="width:18px;height:18px;background:var(--g1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;">✓</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prod-actions">
+            <button class="btn btn-outline-g" style="flex:1;">♡ Wishlist</button>
+            <button class="btn btn-green" style="flex:2;">Add to Cart →</button>
+          </div>
+          <div style="height:8px;"></div>
+        </div>
+        <div class="btmnav">
+          <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni on"><span class="ic">🛒</span><span>Cart</span></div>
+          <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN: My Orders -->
+    <div class="screen-col">
+      <div class="screen-label">My Orders</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar">
+          <span class="topbar-back">←</span>
+          <span class="topbar-title">My Orders</span>
+        </div>
+        <div class="scrollarea">
+          <!-- Active order -->
+          <div style="background:var(--g1);padding:14px 14px 0;color:white;">
+            <div style="font-size:10px;opacity:.7;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Active Delivery</div>
+          </div>
+          <div style="background:var(--g1);padding:0 14px 14px;color:white;">
+            <div style="background:rgba(255,255,255,.15);border-radius:var(--r12);padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <div style="font-size:28px;">💐</div>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Sunrise Delight Bouquet</div>
+                <div style="font-size:10px;opacity:.7;">Order #FNP48291 · Arriving by 6:45 PM</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:10px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 8px;margin-bottom:4px;">LIVE 🔴</div>
+                <div style="font-size:11px;opacity:.7;">Track →</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past orders -->
+          <div style="padding:14px 14px 6px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;">Past Orders</div>
+
+          <div style="background:white;margin:0 10px 8px;border-radius:var(--r16);padding:14px;box-shadow:var(--shadow-xs);">
+            <div style="display:flex;gap:10px;margin-bottom:10px;">
+              <div style="font-size:28px;">🎂</div>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Chocolate Dream Cake</div>
+                <div style="font-size:10px;color:var(--ink4);">Delivered 10 Jul · ₹849</div>
+              </div>
+              <span class="tag tag-green">Delivered</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button style="flex:1;padding:7px;background:var(--g5);color:var(--g1);border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Reorder</button>
+              <button style="flex:1;padding:7px;background:var(--cream);color:var(--ink3);border:1px solid var(--sand);border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Rate</button>
+            </div>
+          </div>
+
+          <div style="background:white;margin:0 10px 8px;border-radius:var(--r16);padding:14px;box-shadow:var(--shadow-xs);">
+            <div style="display:flex;gap:10px;margin-bottom:10px;">
+              <div style="font-size:28px;">🌷</div>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Pink Peony Bunch</div>
+                <div style="font-size:10px;color:var(--ink4);">Delivered 2 Jul · ₹1,099</div>
+              </div>
+              <span class="tag tag-green">Delivered</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button style="flex:1;padding:7px;background:var(--g5);color:var(--g1);border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Reorder</button>
+              <button style="flex:1;padding:7px;background:var(--cream);color:var(--ink3);border:1px solid var(--sand);border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Rate</button>
+            </div>
+          </div>
+
+          <!-- Points earned strip -->
+          <div style="margin:0 10px 16px;background:var(--gold3);border:1.5px solid #E8C97A;border-radius:var(--r12);padding:12px;display:flex;align-items:center;gap:10px;">
+            <div style="font-size:24px;">⭐</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--gold);">1,240 Bloom Points earned</div>
+              <div style="font-size:10px;color:var(--gold);">Redeem on your next order</div>
+            </div>
+          </div>
+          <div style="height:8px;"></div>
+        </div>
+        <div class="btmnav">
+          <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni on"><span class="ic">📦</span><span>Orders</span></div>
+          <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end phones-flex -->
+</div>
+</div>
+
+<!-- ══ QR VIDEO ══ -->
+<div class="feature-divider"></div>
+<div id="sec-qr" class="section-outer">
+<div class="section" id="section-qr">
+  <div class="section-title-row">
+    <div class="section-num">02</div>
+    <div class="section-meta">
+      <h2>QR Video Message</h2>
+      <p>Checkout add-on · Video upload · Branded recipient experience</p>
+      <span class="feature-badge">🎥 Premium Add-On · ₹79</span>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <div class="anno-col left">
+      <div class="anno gold"><div class="anno-tag">Upsell Entry</div><p>Surfaces post product selection in checkout — maximum visibility when emotional intent is highest.</p></div>
+      <div class="anno"><div class="anno-tag">Recording Flow</div><p>In-app camera or gallery upload. Max 60s. Preview before confirm. Compressed on-device to ≤15MB.</p></div>
+      <div class="anno gold"><div class="anno-tag">QR Generation</div><p>Token-secured URL auto-generated. QR sent to packing team dashboard. Printed on physical gift card.</p></div>
+      <div class="anno"><div class="anno-tag">Privacy Design</div><p>URL not guessable. Token expires 30 days post-delivery. No app needed to view — any browser.</p></div>
+    </div>
+    <div class="phones-flex">
+      <!-- Screen 1: Checkout + Addon -->
+      <div class="screen-col">
+        <div class="screen-label">Checkout — Add Video</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">Complete Order</span></div>
+          <div class="scrollarea">
+            <!-- Product recap -->
+            <div style="background:white;padding:12px 14px;border-bottom:1px solid #f5f0ea;display:flex;gap:10px;align-items:center;">
+              <div style="font-size:30px;">💐</div>
+              <div style="flex:1;"><div style="font-size:12px;font-weight:700;">Sunrise Delight Bouquet</div><div style="font-size:11px;color:var(--ink4);">Same-day delivery · 15 Jul</div></div>
+              <div style="font-size:13px;font-weight:700;color:var(--g1);">₹1,299</div>
+            </div>
+
+            <!-- Video addon (expanded) -->
+            <div style="padding:12px 10px 0;">
+              <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Enhance your gift</div>
+            </div>
+            <div class="addon-strip">
+              <div class="addon-header">
+                <span class="addon-icon">🎥</span>
+                <div><div style="font-size:12px;font-weight:700;color:var(--ink);">Video Message</div><div style="font-size:10px;color:var(--ink3);">Recipient scans QR on bouquet to play</div></div>
+                <span class="addon-price-pill">+₹79</span>
+              </div>
+              <div class="upload-zone">
+                <div class="uicon">📹</div>
+                <div class="ut">Tap to Record or Upload</div>
+                <div class="us">Up to 60 sec · MP4 or MOV</div>
+              </div>
+            </div>
+
+            <!-- QR preview card -->
+            <div class="qr-row">
+              <div class="qr-chip">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                  <rect x="2" y="2" width="18" height="18" rx="2" fill="white"/><rect x="5" y="5" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="7" y="7" width="8" height="8" fill="white"/>
+                  <rect x="32" y="2" width="18" height="18" rx="2" fill="white"/><rect x="35" y="5" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="37" y="7" width="8" height="8" fill="white"/>
+                  <rect x="2" y="32" width="18" height="18" rx="2" fill="white"/><rect x="5" y="35" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="7" y="37" width="8" height="8" fill="white"/>
+                  <rect x="32" y="32" width="4" height="4" fill="white"/><rect x="38" y="32" width="4" height="4" fill="white"/><rect x="44" y="32" width="4" height="4" fill="white"/>
+                  <rect x="32" y="38" width="4" height="4" fill="white"/><rect x="38" y="44" width="4" height="4" fill="white"/><rect x="44" y="38" width="4" height="4" fill="white"/>
+                  <rect x="32" y="44" width="4" height="4" fill="white"/><rect x="44" y="44" width="4" height="4" fill="white"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;margin-bottom:3px;">Printed on gift card</div>
+                <div style="font-size:10px;color:var(--ink4);line-height:1.5;">Recipient scans with any camera app. No app needed.</div>
+              </div>
+            </div>
+
+            <!-- Order total -->
+            <div class="card" style="margin:10px;">
+              <div style="padding:12px 14px;">
+                <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;margin-bottom:8px;">Order Summary</div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;"><span>Bouquet</span><span>₹1,299</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;color:var(--gold);"><span>Video Message ✦</span><span>₹79</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;"><span>Delivery</span><span style="color:var(--g1);">Free</span></div>
+                <div style="border-top:1px solid var(--sand);margin:8px 0;"></div>
+                <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;"><span>Total</span><span style="color:var(--g1);">₹1,378</span></div>
+              </div>
+            </div>
+
+            <div style="padding:0 10px 16px;"><button class="btn btn-green">Place Order →</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Video Recipient Page -->
+      <div class="screen-col">
+        <div class="screen-label">Recipient — Video Player</div>
+        <div class="phone tall">
+          <div class="status" style="background:var(--ink);"><div class="status-notch"></div><span class="status-time" style="color:rgba(255,255,255,.8);">9:41</span><span class="status-icons" style="color:rgba(255,255,255,.6);">▐▐▐ ▊</span></div>
+          <div style="background:var(--ink);padding:14px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold2);letter-spacing:1px;">🌸 FNP</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;">Someone sent you something special</div>
+          </div>
+          <div class="scrollarea" style="background:var(--ink);">
+            <!-- Video player -->
+            <div class="vp-hero">
+              <div class="vp-thumbnail">💌</div>
+              <div class="vp-play">▶</div>
+              <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);"><div style="width:35%;height:100%;background:var(--gold2);"></div></div>
+            </div>
+
+            <!-- Message info -->
+            <div style="background:white;padding:16px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:4px;">Happy Birthday, Priya! 🎂</div>
+              <div style="font-size:11px;color:var(--ink4);margin-bottom:12px;">A personal message from Rahul · 15 Jul 2025</div>
+              <div style="background:var(--cream);border-radius:var(--r12);padding:12px;font-size:12px;color:var(--ink3);font-style:italic;line-height:1.6;margin-bottom:14px;border-left:3px solid var(--gold2);">
+                "Wishing you the most beautiful day. These flowers are just a small token of how much you mean to me... 🌸"
+              </div>
+              <button class="btn btn-green" style="margin-bottom:8px;">Share this moment 🔗</button>
+              <button class="btn btn-outline-g">Browse FNP →</button>
+            </div>
+
+            <!-- Physical card mockup -->
+            <div style="margin:10px;background:white;border:2px dashed var(--sand);border-radius:var(--r16);padding:16px;text-align:center;">
+              <div style="font-size:9px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Gift Card — Physical</div>
+              <div style="font-size:11px;color:var(--ink);margin-bottom:10px;font-style:italic;">Scan to play your<br>personal video message</div>
+              <div style="display:inline-block;background:var(--ink);padding:10px;border-radius:10px;">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                  <rect x="2" y="2" width="18" height="18" rx="2" fill="white"/><rect x="5" y="5" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="7" y="7" width="8" height="8" fill="white"/>
+                  <rect x="32" y="2" width="18" height="18" rx="2" fill="white"/><rect x="35" y="5" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="37" y="7" width="8" height="8" fill="white"/>
+                  <rect x="2" y="32" width="18" height="18" rx="2" fill="white"/><rect x="5" y="35" width="12" height="12" rx="1" fill="#0F0F0F"/><rect x="7" y="37" width="8" height="8" fill="white"/>
+                  <rect x="32" y="32" width="4" height="4" fill="white"/><rect x="38" y="32" width="4" height="4" fill="white"/><rect x="44" y="44" width="4" height="4" fill="white"/>
+                </svg>
+              </div>
+              <div style="margin-top:8px;font-size:9px;color:var(--ink4);">fnp.com/v/xyz42k</div>
+            </div>
+            <div style="height:16px;"></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- phones-flex -->
+
+    <div class="anno-col right">
+      <div class="anno rose"><div class="anno-tag">Branded Player</div><p>No app needed. Opens in browser. FNP branded with re-engagement CTA to drive new orders.</p></div>
+      <div class="anno gold"><div class="anno-tag">Viral Loop</div><p>"Share this moment" creates organic UGC content. Massive brand discovery potential via Instagram.</p></div>
+      <div class="anno"><div class="anno-tag">Physical Card</div><p>QR + short URL on gift card. Packing team dashboard handles printing — zero change to delivery ops.</p></div>
+      <div class="spec-card">
+        <div class="spec-card-head">🎥 Feature Spec</div>
+        <div class="spec-row"><div class="spec-k">Video max</div><div class="spec-v">60 seconds</div></div>
+        <div class="spec-row"><div class="spec-k">Price</div><div class="spec-v">₹79 add-on</div></div>
+        <div class="spec-row"><div class="spec-k">Storage TTL</div><div class="spec-v">30 days</div></div>
+        <div class="spec-row"><div class="spec-k">Viewer app?</div><div class="spec-v">No — any browser</div></div>
+        <div class="spec-row"><div class="spec-k">Timeline</div><div class="spec-v">6 weeks MVP</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ LIVE TRACKING ══ -->
+<div class="feature-divider"></div>
+<div id="sec-tracking" class="section-outer">
+<div class="section" id="section-tracking">
+  <div class="section-title-row">
+    <div class="section-num">03</div>
+    <div class="section-meta">
+      <h2>Live Delivery Tracking + Midnight Clarity</h2>
+      <p>GPS map · Timeline steps · Midnight before/after toggle</p>
+      <span class="feature-badge">📍 Critical Priority</span>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <div class="anno-col left">
+      <div class="anno"><div class="anno-tag">Live GPS</div><p>Real-time rider location refreshed every 30s. Push notifications at: picked up, 10-min ETA, arrived.</p></div>
+      <div class="anno gold"><div class="anno-tag">Fallback UX</div><p>Partners not yet GPS-integrated get milestone tracking: Picked Up → On Way → Nearby.</p></div>
+      <div class="anno rose"><div class="anno-tag">Midnight Fix</div><p>Before vs After 12 AM toggle. Auto-surfaces when occasion = delivery date + 1. 1-sprint build.</p></div>
+    </div>
+    <div class="phones-flex">
+      <!-- Live tracking screen -->
+      <div class="screen-col">
+        <div class="screen-label">Live Tracking</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">Track #FNP48291</span><span class="topbar-action">📞</span></div>
+          <div class="scrollarea">
+            <div class="eta-hero">
+              <div class="eta-live"><div class="live-dot"></div><span style="font-size:10px;opacity:.7;font-weight:700;letter-spacing:.06em;">LIVE TRACKING</span></div>
+              <div class="eta-time">Arriving in 12 min</div>
+              <div class="eta-sub">Expected by 6:45 PM today</div>
+              <div class="eta-pill">🛵 Ravi is 2.3 km away</div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-frame">
+              <div class="map-grid-bg"></div>
+              <div class="map-road mr-h" style="top:50%;transform:translateY(-50%);"></div>
+              <div class="map-road mr-v" style="left:42%;"></div>
+              <div class="map-road mr-h" style="top:28%;height:5px;opacity:.6;"></div>
+              <div class="map-pin pin-rider" style="top:26%;left:22%;transform:translate(-50%,-50%);">🛵</div>
+              <div class="map-pin" style="top:50%;left:42%;transform:translate(-50%,-50%);">📍</div>
+              <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 300 180">
+                <path d="M70 52 Q110 52 126 90" stroke="#B8860B" stroke-width="2.5" fill="none" stroke-dasharray="6,4" opacity=".8"/>
+              </svg>
+              <div class="map-eta-chip">2.3 km · 12 min</div>
+            </div>
+
+            <!-- Rider card -->
+            <div class="rider-card">
+              <div class="rider-avatar">👨</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;">Ravi Kumar</div>
+                <div style="font-size:10px;color:var(--ink4);">Delivery partner · ⭐ 4.8</div>
+              </div>
+              <div class="rider-actions">
+                <button class="ic-btn">📞</button>
+                <button class="ic-btn">💬</button>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="card" style="margin:10px;">
+              <div class="card-header"><div class="card-title">Delivery Timeline</div></div>
+              <div class="timeline-steps">
+                <div class="t-step done"><div class="t-dot">✓</div><div class="t-info"><h5>Order Confirmed</h5><p>11:30 AM · Payment received</p></div></div>
+                <div class="t-step done"><div class="t-dot">✓</div><div class="t-info"><h5>Flowers Prepared</h5><p>2:15 PM · Bouquet freshly arranged</p></div></div>
+                <div class="t-step active"><div class="t-dot">🛵</div><div class="t-info"><h5>Out for Delivery</h5><p>6:10 PM · Ravi picked up your order</p></div></div>
+                <div class="t-step"><div class="t-dot">📦</div><div class="t-info"><h5>Delivered</h5><p>Expected by 6:45 PM</p></div></div>
+              </div>
+            </div>
+
+            <!-- Order summary -->
+            <div style="margin:0 10px 16px;background:white;border-radius:var(--r12);padding:12px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow-xs);">
+              <div style="font-size:26px;">💐</div>
+              <div style="flex:1;"><div style="font-size:12px;font-weight:700;">Sunrise Delight Bouquet</div><div style="font-size:10px;color:var(--ink4);">+ Video message add-on</div></div>
+              <div style="font-size:13px;font-weight:700;color:var(--g1);">₹1,378</div>
+            </div>
+          </div>
+          <div class="btmnav">
+            <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+            <div class="bni on"><span class="ic">📦</span><span>Orders</span></div>
+            <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+            <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+            <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Midnight toggle screen -->
+      <div class="screen-col">
+        <div class="screen-label">Midnight Slot Picker</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">Delivery Slot</span></div>
+          <div class="scrollarea">
+            <!-- Date strip -->
+            <div class="card" style="margin:10px;">
+              <div style="padding:12px 14px;">
+                <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Occasion Date</div>
+                <div style="display:flex;gap:6px;">
+                  <div style="flex:1;text-align:center;background:var(--g1);color:white;border-radius:10px;padding:10px;">
+                    <div style="font-size:9px;opacity:.7;">TUE</div><div style="font-size:18px;font-weight:700;">15</div><div style="font-size:9px;opacity:.7;">JUL</div>
+                  </div>
+                  <div style="flex:1;text-align:center;border:1.5px solid var(--sand);border-radius:10px;padding:10px;color:var(--ink4);">
+                    <div style="font-size:9px;">WED</div><div style="font-size:18px;font-weight:700;color:var(--ink);">16</div><div style="font-size:9px;">JUL</div>
+                  </div>
+                  <div style="flex:1;text-align:center;border:1.5px solid var(--sand);border-radius:10px;padding:10px;color:var(--ink4);">
+                    <div style="font-size:9px;">THU</div><div style="font-size:18px;font-weight:700;color:var(--ink);">17</div><div style="font-size:9px;">JUL</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day slots -->
+            <div class="card" style="margin:0 10px 10px;">
+              <div style="padding:12px 14px;">
+                <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;margin-bottom:8px;">Day Slots · 15 Jul</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div style="border:1.5px solid var(--g2);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;background:var(--g5);">
+                    <div><div style="font-size:12px;font-weight:600;">9:00 AM – 1:00 PM</div><div style="font-size:10px;color:var(--ink4);">Morning slot</div></div>
+                    <div style="font-size:11px;color:var(--g1);font-weight:600;">Free</div>
+                  </div>
+                  <div style="border:1.5px solid var(--sand);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;">
+                    <div><div style="font-size:12px;font-weight:600;">2:00 – 6:00 PM</div><div style="font-size:10px;color:var(--ink4);">Afternoon slot</div></div>
+                    <div style="font-size:11px;color:var(--ink4);">Free</div>
+                  </div>
+                  <div style="border:1.5px solid var(--sand);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;">
+                    <div><div style="font-size:12px;font-weight:600;">7:00 – 10:00 PM</div><div style="font-size:10px;color:var(--ink4);">Evening slot</div></div>
+                    <div style="font-size:11px;color:var(--gold);font-weight:600;">₹49</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MIDNIGHT SLOT — KEY FEATURE -->
+            <div class="dark-slot-card">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:20px;">🌙</span>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:white;">Midnight Delivery</div>
+              </div>
+              <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:12px;">Birthday on 16 Jul? Choose exactly when the magic arrives.</div>
+              <div class="slot-tabs">
+                <button class="slot-tab" onclick="toggleSlotTab(this, 'midnight')">🎁 Before Midnight<br><span style="font-size:9px;font-weight:400;">11:00–11:59 PM (15 Jul)</span></button>
+                <button class="slot-tab active" onclick="toggleSlotTab(this, 'midnight')">🎂 After Midnight<br><span style="font-size:9px;font-weight:400;">12:00–12:30 AM (16 Jul)</span></button>
+              </div>
+              <div style="margin-top:10px;background:rgba(255,255,255,.12);border-radius:10px;padding:10px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.5;">
+                ✨ Gift arrives <strong style="color:white;">on the actual birthday</strong> at 12:00–12:30 AM on 16 Jul
+              </div>
+              <div style="margin-top:10px;"><button class="btn btn-gold">Confirm Midnight Slot →</button></div>
+            </div>
+            <div style="height:16px;"></div>
+          </div>
+          <div class="btmnav">
+            <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+            <div class="bni on"><span class="ic">🛒</span><span>Cart</span></div>
+            <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+            <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+            <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="anno-col right">
+      <div class="anno"><div class="anno-tag">One-tap contact</div><p>Call or chat delivery partner directly from tracking screen. Eliminates inbound support calls.</p></div>
+      <div class="anno gold"><div class="anno-tag">Auto-detection</div><p>System detects occasion date = tomorrow, automatically surfaces midnight option. No extra steps for user.</p></div>
+      <div class="spec-card">
+        <div class="spec-card-head">📍 Delivery Spec</div>
+        <div class="spec-row"><div class="spec-k">GPS refresh</div><div class="spec-v">Every 30 sec</div></div>
+        <div class="spec-row"><div class="spec-k">Midnight MVP</div><div class="spec-v">2 weeks (1 sprint)</div></div>
+        <div class="spec-row"><div class="spec-k">Live tracking</div><div class="spec-v">8–12 weeks</div></div>
+        <div class="spec-row"><div class="spec-k">CSAT target</div><div class="spec-v">+15 points</div></div>
+        <div class="spec-row"><div class="spec-k">Support -</div><div class="spec-v">30% reduction</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ AI ASSISTANT ══ -->
+<div class="feature-divider"></div>
+<div id="sec-ai" class="section-outer">
+<div class="section" id="section-ai">
+  <div class="section-title-row">
+    <div class="section-num">04</div>
+    <div class="section-meta">
+      <h2>AI Gift Assistant</h2>
+      <p>Natural language · Contextual recommendations · Voice input</p>
+      <span class="feature-badge">✦ Differentiator · Phase 1: 6 weeks</span>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <div class="anno-col left">
+      <div class="anno"><div class="anno-tag">Entry Point</div><p>Replaces search bar in homepage header. Also accessible via dedicated bottom nav tab.</p></div>
+      <div class="anno gold"><div class="anno-tag">Phase 1</div><p>Structured filter UI disguised as conversation. No LLM. Ships in 4–6 weeks with high conversion.</p></div>
+      <div class="anno rose"><div class="anno-tag">Stock Grounding</div><p>Only recommends in-stock, PIN-deliverable products. No hallucinated items. Safety first.</p></div>
+    </div>
+    <div class="phones-flex">
+      <!-- AI Chat screen -->
+      <div class="screen-col">
+        <div class="screen-label">AI Gift Chat</div>
+        <div class="phone tall" style="display:flex;flex-direction:column;height:660px;">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="ai-bar">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--gold2);">✦</div>
+              <div><div style="font-size:14px;font-weight:700;color:white;">FNP Gift Assistant</div><div style="font-size:10px;color:rgba(255,255,255,.5);">Ask me anything — I'll find the perfect gift</div></div>
+            </div>
+          </div>
+          <div class="scrollarea" style="flex:1;background:var(--cream2);">
+            <div class="chat-wrap">
+              <div>
+                <div class="bot-meta"><div class="bot-avatar">✦</div><span class="bot-name">FNP Assistant</span></div>
+                <div class="msg bot">Hi! 🌸 Tell me about the person and occasion — I'll find the perfect gift for you!</div>
+              </div>
+              <div class="msg user">Tomorrow is my boyfriend's birthday 🎂 suggest me some gifts!</div>
+              <div>
+                <div class="bot-meta"><div class="bot-avatar">✦</div><span class="bot-name">FNP Assistant</span></div>
+                <div class="msg bot">How exciting! 🎉 Tomorrow's the big day — let's make it special. What's your budget?</div>
+              </div>
+              <div class="msg user">Around ₹800–₹1500, something he'll really love 💛</div>
+              <div>
+                <div class="bot-meta"><div class="bot-avatar">✦</div><span class="bot-name">FNP Assistant</span></div>
+                <div class="msg bot">Perfect range! 🎁 Here are birthday gifts he'll absolutely love — all with same-day delivery for tomorrow:</div>
+              </div>
+            </div>
+            <div class="reco-scroll">
+              <div class="reco-item"><div class="reco-thumb" style="background:#E8F5E9;">🎂</div><div class="reco-body"><div class="reco-name">Birthday Cake</div><div class="reco-price">₹849</div></div></div>
+              <div class="reco-item"><div class="reco-thumb" style="background:#FFF8E7;">🧁</div><div class="reco-body"><div class="reco-name">Choco Truffle Box</div><div class="reco-price">₹699</div></div></div>
+              <div class="reco-item"><div class="reco-thumb" style="background:#E3F2FD;">🌻</div><div class="reco-body"><div class="reco-name">Sunflower Bunch</div><div class="reco-price">₹999</div></div></div>
+              <div class="reco-item"><div class="reco-thumb" style="background:#FDF3DC;">🎁</div><div class="reco-body"><div class="reco-name">Gift Hamper</div><div class="reco-price">₹1,299</div></div></div>
+            </div>
+            <div class="chat-wrap" style="padding-top:4px;">
+              <div>
+                <div class="bot-meta"><div class="bot-avatar">✦</div><span class="bot-name">FNP Assistant</span></div>
+                <div class="msg bot">All available for tomorrow 🚀 Want to add a personalised birthday card or surprise midnight delivery? 🎉<div class="typing" style="margin-top:6px;"><span></span><span></span><span></span></div></div>
+              </div>
+            </div>
+            <div class="chips-row">
+              <div class="chip">Add birthday card 🎂</div>
+              <div class="chip">Midnight delivery 🌙</div>
+              <div class="chip">Add chocolate 🍫</div>
+              <div class="chip">Show more</div>
+            </div>
+          </div>
+          <div class="ai-input-row">
+            <input class="ai-inp" placeholder="Ask anything...">
+            <div style="font-size:18px;cursor:pointer;">🎙️</div>
+            <button class="ai-send">➤</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Results screen -->
+      <div class="screen-col">
+        <div class="screen-label">AI Results Grid</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">Gift Suggestions</span><span class="topbar-action">🔄</span></div>
+          <div class="scrollarea">
+            <!-- Context recap -->
+            <div style="background:var(--g1);padding:10px 14px;color:white;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:14px;color:var(--gold2);">✦</span>
+              <div style="font-size:11px;line-height:1.4;">Boyfriend's birthday · ₹800–₹1500 · Tomorrow · <span style="text-decoration:underline;cursor:pointer;">Edit</span></div>
+            </div>
+            <!-- Sort/filter bar -->
+            <div style="background:white;padding:8px 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #f0ece6;">
+              <div style="flex-shrink:0;background:var(--g1);color:white;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;">All</div>
+              <div style="flex-shrink:0;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;">Cakes</div>
+              <div style="flex-shrink:0;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;">Flowers</div>
+              <div style="flex-shrink:0;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;">Combos</div>
+            </div>
+            <!-- Grid -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;">
+              <div style="background:white;border-radius:var(--r12);overflow:hidden;box-shadow:var(--shadow-xs);">
+                <div style="height:90px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:38px;">🎂</div>
+                <div style="padding:8px;">
+                  <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Birthday Cake</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);margin-bottom:6px;">₹849</div>
+                  <button style="width:100%;padding:6px;background:var(--g1);color:white;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Add to Cart</button>
+                </div>
+              </div>
+              <div style="background:white;border-radius:var(--r12);overflow:hidden;box-shadow:var(--shadow-xs);border:2px solid var(--g2);">
+                <div style="background:var(--g1);color:white;font-size:9px;font-weight:700;padding:3px 8px;text-align:center;letter-spacing:.06em;">AI PICK ✦</div>
+                <div style="height:80px;background:#FDF3DC;display:flex;align-items:center;justify-content:center;font-size:38px;">🎁</div>
+                <div style="padding:8px;">
+                  <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Luxury Gift Hamper</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);margin-bottom:6px;">₹1,299</div>
+                  <button style="width:100%;padding:6px;background:var(--g1);color:white;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Add to Cart</button>
+                </div>
+              </div>
+              <div style="background:white;border-radius:var(--r12);overflow:hidden;box-shadow:var(--shadow-xs);">
+                <div style="height:90px;background:#FFF8E7;display:flex;align-items:center;justify-content:center;font-size:38px;">🌻</div>
+                <div style="padding:8px;">
+                  <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Sunflower Bunch</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);margin-bottom:6px;">₹999</div>
+                  <button style="width:100%;padding:6px;background:var(--g1);color:white;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Add to Cart</button>
+                </div>
+              </div>
+              <div style="background:white;border-radius:var(--r12);overflow:hidden;box-shadow:var(--shadow-xs);">
+                <div style="height:90px;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:38px;">🧁</div>
+                <div style="padding:8px;">
+                  <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Choco Truffle Box</div>
+                  <div style="font-size:11px;font-weight:700;color:var(--g1);margin-bottom:6px;">₹699</div>
+                  <button style="width:100%;padding:6px;background:var(--g1);color:white;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div style="padding:0 10px 16px;"><button class="btn btn-outline-g">Refine suggestions ✦</button></div>
+          </div>
+          <div class="btmnav">
+            <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+            <div class="bni on"><span class="ic">✦</span><span>AI Gift</span></div>
+            <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+            <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+            <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="anno-col right">
+      <div class="anno"><div class="anno-tag">AI Pick badge</div><p>Top recommendation gets "AI PICK ✦" badge — increases trust and conversion on the best item.</p></div>
+      <div class="anno gold"><div class="anno-tag">Context breadcrumb</div><p>Green bar shows active query. One-tap Edit keeps the context for rapid iteration.</p></div>
+      <div class="spec-card">
+        <div class="spec-card-head">✦ AI Spec</div>
+        <div class="spec-row"><div class="spec-k">Phase 1</div><div class="spec-v">Structured filters</div></div>
+        <div class="spec-row"><div class="spec-k">Phase 2</div><div class="spec-v">LLM + embeddings</div></div>
+        <div class="spec-row"><div class="spec-k">P1 timeline</div><div class="spec-v">4–6 weeks</div></div>
+        <div class="spec-row"><div class="spec-k">Grounding</div><div class="spec-v">In-stock + PIN only</div></div>
+        <div class="spec-row"><div class="spec-k">Conv. target</div><div class="spec-v">&gt;35% session→cart</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ CARE GIFTING ══ -->
+<div class="feature-divider"></div>
+<div id="sec-care" class="section-outer">
+<div class="section" id="section-care">
+  <div class="section-title-row">
+    <div class="section-num">05</div>
+    <div class="section-meta">
+      <h2>Comfort Care Gifting</h2>
+      <p>Care packages · Recurring delivery · Empathy-first UX</p>
+      <span class="feature-badge">🌸 Pilot First · 3–4 Weeks</span>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <div class="anno-col left">
+      <div class="anno rose"><div class="anno-tag">Brand Language</div><p>"Comfort Care" — not "period gifting" in public UI. Warm, inclusive framing. No clinical copy.</p></div>
+      <div class="anno"><div class="anno-tag">Pilot Strategy</div><p>Collection page first. Homepage placement only if CTR &gt;3% + conversion &gt;2% for 2 weeks.</p></div>
+      <div class="anno gold"><div class="anno-tag">Recurring delivery</div><p>Monthly subscription mechanic — high LTV potential and strong retention driver for the app.</p></div>
+    </div>
+    <div class="phones-flex">
+      <!-- Care collection -->
+      <div class="screen-col">
+        <div class="screen-label">Care Collection</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="topbar" style="background:var(--rose);"><span class="topbar-back">←</span><span class="topbar-title">Comfort Care Gifts</span><span class="topbar-action">♡</span></div>
+          <div class="scrollarea">
+            <div class="care-hero-area">
+              <div style="font-size:9px;font-weight:700;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;">🌸 COMFORT CARE · PERIODS</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose);margin-bottom:5px;">She deserves extra<br>care today</div>
+              <div style="font-size:11px;color:#880E4F;line-height:1.5;margin-bottom:10px;">Period days can be tough — send her comfort, warmth & a little reminder that she's loved.</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="tag tag-rose">🩸 Period Care</span>
+                <span class="tag tag-rose">From ₹349</span>
+                <span class="tag tag-rose">Same-day delivery</span>
+                <span class="tag tag-rose">Monthly plans</span>
+              </div>
+              <div style="background:rgba(173,20,87,.08);border-radius:var(--r8);padding:8px 10px;font-size:10px;color:#880E4F;line-height:1.5;">
+                💡 <strong>Set a monthly reminder</strong> — auto-schedule a comfort gift every month so she always feels cared for.
+              </div>
+            </div>
+
+            <div class="schedule-strip">
+              <span class="icon">⏰</span>
+              <div><h4>Schedule a Monthly Surprise</h4><p>Set recurring delivery — she receives care every month</p></div>
+            </div>
+
+            <div class="care-pkg-item">
+              <div class="care-pkg-thumb" style="background:#FCE4EC;">🍫</div>
+              <div class="care-pkg-details">
+                <h4>Chocolate Comfort Kit</h4>
+                <p>Dark chocolate, truffles + heartfelt card</p>
+                <div><span class="tag tag-rose" style="font-size:9px;">Bestseller</span> <span class="tag tag-rose" style="font-size:9px;">Same day</span></div>
+              </div>
+              <div class="care-pkg-right"><div class="care-price">₹449</div><button class="care-add">Add</button></div>
+            </div>
+
+            <div class="care-pkg-item">
+              <div class="care-pkg-thumb" style="background:#E8F5E9;">🌷</div>
+              <div class="care-pkg-details">
+                <h4>Gentle Bloom Bouquet</h4>
+                <p>Soft pink peonies — calming & beautiful</p>
+                <div><span class="tag tag-rose" style="font-size:9px;">Mood lift</span> <span class="tag tag-rose" style="font-size:9px;">Fragrant</span></div>
+              </div>
+              <div class="care-pkg-right"><div class="care-price">₹699</div><button class="care-add">Add</button></div>
+            </div>
+
+            <div class="care-pkg-item">
+              <div class="care-pkg-thumb" style="background:#EDE7F6;">🕯️</div>
+              <div class="care-pkg-details">
+                <h4>Calm & Relax Gift Box</h4>
+                <p>Lavender candle, herbal tea + face mask</p>
+                <div><span class="tag tag-rose" style="font-size:9px;">Pampering</span> <span class="tag tag-rose" style="font-size:9px;">Luxury</span></div>
+              </div>
+              <div class="care-pkg-right"><div class="care-price">₹999</div><button class="care-add">Add</button></div>
+            </div>
+
+            <div class="care-pkg-item">
+              <div class="care-pkg-thumb" style="background:#FFF8E7;">☕</div>
+              <div class="care-pkg-details">
+                <h4>Warm Hug Bundle</h4>
+                <p>Chamomile tea, honey, cozy socks</p>
+                <div><span class="tag tag-rose" style="font-size:9px;">Comfort</span> <span class="tag tag-rose" style="font-size:9px;">Under ₹500</span></div>
+              </div>
+              <div class="care-pkg-right"><div class="care-price">₹399</div><button class="care-add">Add</button></div>
+            </div>
+
+            <div style="padding:0 10px 16px;"><button class="btn btn-rose">View all Comfort Care →</button></div>
+          </div>
+          <div class="btmnav">
+            <div class="bni on"><span class="ic">🏠</span><span>Home</span></div>
+            <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+            <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+            <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+            <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Care homepage entry -->
+      <div class="screen-col">
+        <div class="screen-label">Homepage Entry</div>
+        <div class="phone tall">
+          <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+          <div class="scrollarea">
+            <div class="app-header">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div class="app-logo">🌸 F<span>N</span>P</div>
+                <div style="display:flex;gap:10px;font-size:20px;color:rgba(255,255,255,.8);">🔔 🛒</div>
+              </div>
+              <div class="search-bar"><span class="search-bar-icon">🔍</span><span class="search-bar-text">Search gifts, flowers, cakes...</span></div>
+            </div>
+            <!-- Occasion strip with Care icon -->
+            <div class="occasion-strip">
+              <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Shop by Occasion</div>
+              <div class="occasion-row">
+                <div class="occ-item"><div class="occ-circle" style="background:#E8F5E9;">🎂</div><div class="occ-label">Birthday</div></div>
+                <div class="occ-item"><div class="occ-circle" style="background:#FCE4EC;">💍</div><div class="occ-label">Anniversary</div></div>
+                <div class="occ-item"><div class="occ-circle" style="background:#FDF3DC;">🌻</div><div class="occ-label">Flowers</div></div>
+                <div class="occ-item">
+                  <div class="occ-circle" style="background:var(--rose3);border:2px solid #F48FB1;">🌸</div>
+                  <div class="occ-label" style="color:var(--rose);font-weight:700;">Care</div>
+                </div>
+                <div class="occ-item"><div class="occ-circle" style="background:#FFF8E1;">🎓</div><div class="occ-label">Congrats</div></div>
+              </div>
+            </div>
+
+            <!-- Comfort care homepage banner -->
+            <div style="margin:10px;background:linear-gradient(135deg,#FCE4EC 0%,#F8BBD9 100%);border-radius:var(--r16);padding:16px;position:relative;overflow:hidden;cursor:pointer;">
+              <div style="position:absolute;right:8px;bottom:-14px;font-size:70px;opacity:.1;">🌸</div>
+              <div style="font-size:9px;font-weight:700;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;">COMFORT CARE ✦</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--rose);margin-bottom:4px;">Send some love today</div>
+              <div style="font-size:11px;color:#880E4F;margin-bottom:10px;opacity:.8;">Chocolates, flowers & comfort gifts</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <span style="background:white;color:var(--rose);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">From ₹349</span>
+                <span style="background:white;color:var(--rose);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">Same-day</span>
+              </div>
+            </div>
+
+            <!-- Trending -->
+            <div class="card" style="margin:10px;">
+              <div class="card-header"><div class="card-title">Fresh Today 🌸</div><span class="see-all">See all</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;">
+                <div style="background:var(--cream);border-radius:10px;overflow:hidden;">
+                  <div style="height:72px;background:var(--g5);display:flex;align-items:center;justify-content:center;font-size:30px;">💐</div>
+                  <div style="padding:7px 8px;"><div style="font-size:11px;font-weight:700;">Classic Roses</div><div style="font-size:11px;font-weight:700;color:var(--g1);">₹799</div></div>
+                </div>
+                <div style="background:var(--cream);border-radius:10px;overflow:hidden;">
+                  <div style="height:72px;background:#FFF8E7;display:flex;align-items:center;justify-content:center;font-size:30px;">🎂</div>
+                  <div style="padding:7px 8px;"><div style="font-size:11px;font-weight:700;">Birthday Cake</div><div style="font-size:11px;font-weight:700;color:var(--g1);">₹599</div></div>
+                </div>
+              </div>
+            </div>
+            <div style="height:16px;"></div>
+          </div>
+          <div class="btmnav">
+            <div class="bni on"><span class="ic">🏠</span><span>Home</span></div>
+            <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+            <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+            <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+            <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="anno-col right">
+      <div class="anno rose"><div class="anno-tag">Occasion strip icon</div><p>"Care" icon in occasion strip is the low-risk first placement — no dedicated homepage section needed initially.</p></div>
+      <div class="anno"><div class="anno-tag">Campaign first</div><p>Instagram/Reels campaign drives traffic directly to collection URL. Measure before asking for homepage real estate.</p></div>
+      <div class="spec-card">
+        <div class="spec-card-head">🌸 Care Spec</div>
+        <div class="spec-row"><div class="spec-k">Brand name</div><div class="spec-v">"Comfort Care"</div></div>
+        <div class="spec-row"><div class="spec-k">Phase 1</div><div class="spec-v">Collection page</div></div>
+        <div class="spec-row"><div class="spec-k">Homepage trigger</div><div class="spec-v">CTR &gt;3% for 2 weeks</div></div>
+        <div class="spec-row"><div class="spec-k">Timeline</div><div class="spec-v">3–4 weeks</div></div>
+        <div class="spec-row"><div class="spec-k">LTV play</div><div class="spec-v">Monthly subscription</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ REMINDERS ══ -->
+<div class="feature-divider"></div>
+<div id="sec-reminders" class="section-outer">
+<div class="section" id="section-reminders">
+  <div class="section-title-row">
+    <div class="section-num">06</div>
+    <div class="section-meta">
+      <h2>Smart Occasion Reminders</h2>
+      <p>Birthday/anniversary alerts · Smart gift prompts · Calendar sync</p>
+      <span class="feature-badge">⏰ Retention Driver</span>
+    </div>
+  </div>
+  <div class="phones-flex">
+    <!-- Reminders Hub -->
+    <div class="screen-col">
+      <div class="screen-label">Reminders Hub</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">My Occasions</span><span class="topbar-action">＋</span></div>
+        <div class="scrollarea">
+          <div class="wishr-hero">
+            <div style="font-size:9px;font-weight:700;opacity:.5;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;">UPCOMING OCCASIONS</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:white;margin-bottom:4px;">Never miss a special moment</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.6);">We'll remind you 7 days before every occasion</div>
+          </div>
+
+          <div style="padding:12px 10px 4px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;">Coming Up Soon</div>
+
+          <div class="reminder-card">
+            <div class="reminder-avatar" style="background:var(--rose3);">👩</div>
+            <div class="reminder-info"><h4>Priya's Birthday</h4><p>🎂 16 Jul · Best Friend</p></div>
+            <div class="reminder-days"><div class="rd-num">5</div><div class="rd-label">days left</div></div>
+          </div>
+          <div style="padding:0 10px 8px;">
+            <button style="width:100%;padding:9px;background:var(--g1);color:white;border:none;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Gift Priya Now — 5 days left ✦</button>
+          </div>
+
+          <div class="reminder-card">
+            <div class="reminder-avatar" style="background:#E3F2FD;">👩‍❤️‍👨</div>
+            <div class="reminder-info"><h4>Wedding Anniversary</h4><p>💍 22 Jul · Wife</p></div>
+            <div class="reminder-days"><div class="rd-num">11</div><div class="rd-label">days left</div></div>
+          </div>
+
+          <div class="reminder-card">
+            <div class="reminder-avatar" style="background:#E8F5E9;">👩‍🦳</div>
+            <div class="reminder-info"><h4>Mom's Birthday</h4><p>🎂 5 Aug · Mother</p></div>
+            <div class="reminder-days"><div class="rd-num">25</div><div class="rd-label">days left</div></div>
+          </div>
+
+          <div style="padding:12px 10px 4px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;">Add Occasion</div>
+          <div style="margin:0 10px 10px;background:white;border:2px dashed var(--sand);border-radius:var(--r16);padding:16px;text-align:center;cursor:pointer;">
+            <div style="font-size:28px;margin-bottom:6px;">＋</div>
+            <div style="font-size:13px;font-weight:700;color:var(--g1);margin-bottom:3px;">Add a birthday or anniversary</div>
+            <div style="font-size:11px;color:var(--ink4);">Or sync from your contacts & calendar</div>
+          </div>
+          <div style="height:16px;"></div>
+        </div>
+        <div class="btmnav">
+          <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+          <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni on"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reminder notification -->
+    <div class="screen-col">
+      <div class="screen-label">Smart Notification</div>
+      <div class="phone short">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="scrollarea" style="background:#1a1a2e;">
+          <!-- Lock screen notifications -->
+          <div style="padding:20px 14px 0;text-align:center;color:white;">
+            <div style="font-size:48px;font-weight:300;opacity:.9;letter-spacing:-2px;margin-bottom:2px;">9:41</div>
+            <div style="font-size:13px;opacity:.5;">Monday, 10 July</div>
+          </div>
+          <!-- FNP push notification -->
+          <div style="margin:20px 14px 0;background:rgba(255,255,255,.12);backdrop-filter:blur(16px);border-radius:var(--r16);padding:14px;border:1px solid rgba(255,255,255,.15);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <div style="width:28px;height:28px;background:var(--g1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;">🌸</div>
+              <div style="flex:1;font-size:11px;font-weight:700;color:white;">FNP — Gift Reminder</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.4);">now</div>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:white;margin-bottom:3px;">🎂 Priya's birthday is in 5 days!</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:10px;">Order by tomorrow for same-day delivery on 16 Jul. Bestsellers from ₹499 →</div>
+            <div style="display:flex;gap:6px;">
+              <button style="flex:1;padding:7px;background:var(--g1);color:white;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Gift Now ✦</button>
+              <button style="flex:1;padding:7px;background:rgba(255,255,255,.15);color:white;border:none;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Remind Later</button>
+            </div>
+          </div>
+
+          <!-- Second notification -->
+          <div style="margin:10px 14px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:var(--r12);padding:12px;border:1px solid rgba(255,255,255,.1);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+              <div style="width:24px;height:24px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;">⭐</div>
+              <div style="font-size:11px;font-weight:600;color:white;">FNP Rewards</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.4);">2 hrs ago</div>
+            </div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);">You've earned 200 Bloom Points! Redeem for ₹50 off your next order.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add occasion screen -->
+    <div class="screen-col">
+      <div class="screen-label">Add Occasion</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar"><span class="topbar-back">←</span><span class="topbar-title">Add Occasion</span></div>
+        <div class="scrollarea">
+          <div style="padding:16px 14px;">
+            <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Person</div>
+            <div style="background:white;border-radius:var(--r12);padding:12px;display:flex;align-items:center;gap:10px;border:1.5px solid var(--sand);margin-bottom:14px;">
+              <div style="font-size:24px;">👩</div>
+              <input style="flex:1;border:none;outline:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--ink);background:transparent;" placeholder="Name (e.g. Priya)">
+            </div>
+
+            <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Relationship</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+              <div style="padding:6px 14px;border-radius:20px;background:var(--g1);color:white;font-size:11px;font-weight:700;cursor:pointer;">Best Friend</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">Partner</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">Parent</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">Sibling</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">Colleague</div>
+            </div>
+
+            <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Occasion Type</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+              <div style="padding:6px 14px;border-radius:20px;background:var(--g1);color:white;font-size:11px;font-weight:700;cursor:pointer;">🎂 Birthday</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">💍 Anniversary</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">🎓 Graduation</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">✨ Custom</div>
+            </div>
+
+            <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Date</div>
+            <div style="background:white;border-radius:var(--r12);padding:12px;display:flex;align-items:center;gap:10px;border:1.5px solid var(--sand);margin-bottom:14px;">
+              <span style="font-size:18px;">📅</span>
+              <span style="font-size:13px;color:var(--ink3);">16 July (every year)</span>
+              <span style="margin-left:auto;font-size:12px;color:var(--g1);font-weight:600;">Change</span>
+            </div>
+
+            <div style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Remind me</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">1 day before</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--g1);color:white;font-size:11px;font-weight:700;cursor:pointer;">7 days before</div>
+              <div style="padding:6px 14px;border-radius:20px;background:var(--cream);border:1px solid var(--sand);color:var(--ink3);font-size:11px;font-weight:600;cursor:pointer;">14 days before</div>
+            </div>
+
+            <button class="btn btn-green">Save Occasion →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ LOYALTY ══ -->
+<div class="feature-divider"></div>
+<div id="sec-loyalty" class="section-outer">
+<div class="section" id="section-loyalty">
+  <div class="section-title-row">
+    <div class="section-num">07</div>
+    <div class="section-meta">
+      <h2>Bloom Loyalty Program</h2>
+      <p>Points · Tiers · Rewards catalogue · Referrals</p>
+      <span class="feature-badge">⭐ Retention · Repeat Purchase</span>
+    </div>
+  </div>
+  <div class="phones-flex">
+    <!-- Loyalty dashboard -->
+    <div class="screen-col">
+      <div class="screen-label">Loyalty Dashboard</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar" style="background:var(--gold);"><span class="topbar-back">←</span><span class="topbar-title">Bloom Rewards</span><span class="topbar-action">ⓘ</span></div>
+        <div class="scrollarea">
+          <div class="loyalty-hero">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div>
+                <div style="font-size:10px;font-weight:700;opacity:.6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;">GOLD MEMBER</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:white;line-height:1;">1,240</div>
+                <div style="font-size:11px;opacity:.7;margin-top:2px;">Bloom Points available</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:28px;">⭐</div>
+                <div style="font-size:11px;opacity:.7;margin-top:2px;">260 to Platinum</div>
+              </div>
+            </div>
+            <!-- Tier progress bar -->
+            <div style="margin-top:14px;">
+              <div style="height:6px;background:rgba(255,255,255,.2);border-radius:3px;">
+                <div style="width:82%;height:100%;background:white;border-radius:3px;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:9px;opacity:.6;margin-top:4px;"><span>Gold (1000)</span><span>Platinum (1500)</span></div>
+            </div>
+          </div>
+
+          <!-- Value summary -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 10px 0;">
+            <div style="background:white;border-radius:var(--r12);padding:12px;text-align:center;box-shadow:var(--shadow-xs);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);">₹62</div>
+              <div style="font-size:9px;color:var(--ink4);margin-top:2px;">Point Value</div>
+            </div>
+            <div style="background:white;border-radius:var(--r12);padding:12px;text-align:center;box-shadow:var(--shadow-xs);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--g1);">14</div>
+              <div style="font-size:9px;color:var(--ink4);margin-top:2px;">Orders</div>
+            </div>
+            <div style="background:white;border-radius:var(--r12);padding:12px;text-align:center;box-shadow:var(--shadow-xs);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);">5%</div>
+              <div style="font-size:9px;color:var(--ink4);margin-top:2px;">Cashback rate</div>
+            </div>
+          </div>
+
+          <!-- Rewards -->
+          <div style="padding:12px 10px 4px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;">Redeem Points</div>
+
+          <div class="reward-item">
+            <span class="reward-icon">🏷️</span>
+            <div class="reward-info"><h4>₹50 Off Next Order</h4><p>Apply at checkout · Expires 30 days</p></div>
+            <div class="reward-pts">1000 pts</div>
+          </div>
+
+          <div class="reward-item">
+            <span class="reward-icon">🚀</span>
+            <div class="reward-info"><h4>Free Express Delivery</h4><p>Valid on orders above ₹499</p></div>
+            <div class="reward-pts">500 pts</div>
+          </div>
+
+          <div class="reward-item">
+            <span class="reward-icon">🎥</span>
+            <div class="reward-info"><h4>Free Video Message Add-On</h4><p>Worth ₹79 · One-time use</p></div>
+            <div class="reward-pts">800 pts</div>
+          </div>
+
+          <div class="reward-item">
+            <span class="reward-icon">🎁</span>
+            <div class="reward-info"><h4>Free Personalised Card</h4><p>Premium hand-written card</p></div>
+            <div class="reward-pts">300 pts</div>
+          </div>
+
+          <!-- Referral -->
+          <div style="margin:10px 10px 16px;background:linear-gradient(135deg,var(--gold),#8B6914);border-radius:var(--r16);padding:14px;color:white;">
+            <div style="font-size:12px;font-weight:700;margin-bottom:3px;">Refer a Friend ✨</div>
+            <div style="font-size:10px;opacity:.8;margin-bottom:10px;">Earn 500 points when they place their first order</div>
+            <button style="background:white;color:var(--gold);border:none;border-radius:8px;padding:7px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Share Invite Link</button>
+          </div>
+        </div>
+        <div class="btmnav">
+          <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni"><span class="ic">📦</span><span>Orders</span></div>
+          <div class="bni on"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier info screen -->
+    <div class="screen-col">
+      <div class="screen-label">Tier Benefits</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar" style="background:var(--gold);"><span class="topbar-back">←</span><span class="topbar-title">Your Tier Benefits</span></div>
+        <div class="scrollarea">
+          <!-- Tier cards -->
+          <div style="padding:12px 10px 0;">
+            <div style="background:linear-gradient(135deg,#E0E0E0,#BDBDBD);border-radius:var(--r16);padding:14px;margin-bottom:8px;opacity:.6;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#616161;">SILVER</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#424242;">0 – 999 Points</div>
+              <div style="font-size:11px;color:#616161;margin-top:4px;">3% cashback · Standard delivery</div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,var(--gold2),#8B6914);border-radius:var(--r16);padding:14px;margin-bottom:8px;border:3px solid white;box-shadow:0 0 0 3px var(--gold2),var(--shadow-md);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.7);">GOLD ← YOU ARE HERE</div>
+                <span style="background:white;color:var(--gold);font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;">CURRENT</span>
+              </div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:white;">1,000 – 1,499 Points</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.8);margin-top:6px;line-height:1.6;">
+                ✦ 5% cashback on all orders<br>
+                ✦ Free standard delivery always<br>
+                ✦ Priority customer support<br>
+                ✦ Early sale access
+              </div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#B2EBF2,#80DEEA);border-radius:var(--r16);padding:14px;margin-bottom:8px;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#00838F;">PLATINUM</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#004D40;">1,500+ Points</div>
+              <div style="font-size:11px;color:#00695C;margin-top:4px;line-height:1.6;">
+                ✦ 8% cashback · Free express delivery<br>
+                ✦ Dedicated gifting concierge<br>
+                ✦ Exclusive curated collections
+              </div>
+            </div>
+          </div>
+
+          <!-- How to earn -->
+          <div style="padding:0 10px 4px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;">How to Earn Points</div>
+          <div style="margin:0 10px 16px;background:white;border-radius:var(--r12);padding:12px;box-shadow:var(--shadow-xs);">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f5f0ea;font-size:12px;"><span>Every order</span><span style="font-weight:700;color:var(--gold);">5 pts per ₹100</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f5f0ea;font-size:12px;"><span>Write a review</span><span style="font-weight:700;color:var(--gold);">50 pts</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f5f0ea;font-size:12px;"><span>Refer a friend</span><span style="font-weight:700;color:var(--gold);">500 pts</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12px;"><span>Birthday bonus</span><span style="font-weight:700;color:var(--gold);">200 pts</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══ GROUP GIFTING ══ -->
+<div class="feature-divider"></div>
+<div id="sec-group" class="section-outer">
+<div class="section" id="section-group">
+  <div class="section-title-row">
+    <div class="section-num">08</div>
+    <div class="section-meta">
+      <h2>Group Gifting</h2>
+      <p>Pool contributions · Split payments · Collective surprise</p>
+      <span class="feature-badge">👥 Social Feature · New Use Case</span>
+    </div>
+  </div>
+  <div class="phones-flex">
+    <!-- Create group gift -->
+    <div class="screen-col">
+      <div class="screen-label">Create Group Gift</div>
+      <div class="phone tall">
+        <div class="status"><div class="status-notch"></div><span class="status-time">9:41</span><span class="status-icons">▐▐▐ ▊</span></div>
+        <div class="topbar" style="background:#1A237E;"><span class="topbar-back">←</span><span class="topbar-title">Group Gift</span><span class="topbar-action">ⓘ</span></div>
+        <div class="scrollarea">
+          <div class="group-hero">
+            <div style="font-size:9px;font-weight:700;opacity:.5;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;">GROUP GIFTING</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:white;margin-bottom:5px;">Pool together for<br>an unforgettable gift</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.6);">Invite friends to contribute. FNP handles the rest.</div>
+          </div>
+
+          <!-- Selected gift -->
+          <div style="background:white;padding:12px 14px;display:flex;gap:10px;align-items:center;border-bottom:1px solid #f5f0ea;">
+            <div style="font-size:30px;">🎁</div>
+            <div style="flex:1;"><div style="font-size:12px;font-weight:700;">Luxury Hamper — Gold</div><div style="font-size:11px;color:var(--ink4);">Total: ₹3,499</div></div>
+            <button style="padding:5px 12px;background:var(--g5);color:var(--g1);border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">Change</button>
+          </div>
+
+          <!-- Progress -->
+          <div class="progress-bar-wrap">
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+              <span style="font-weight:700;">₹2,100 collected</span>
+              <span style="color:var(--ink4);">of ₹3,499</span>
+            </div>
+            <div class="prog-track"><div class="prog-fill" style="width:60%;"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--ink4);">
+              <span>3 contributors</span>
+              <span>₹1,399 remaining</span>
+            </div>
+          </div>
+
+          <!-- Contributors -->
+          <div style="padding:0 10px 4px;font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;">Contributors</div>
+
+          <div class="contributor-item">
+            <div class="c-avatar" style="background:#E8F5E9;color:var(--g1);">A</div>
+            <div style="flex:1;"><div class="c-name">Aisha (You)</div><div class="c-status">Organiser</div></div>
+            <div class="c-amount">₹700</div>
+            <span class="tag tag-green" style="margin-left:6px;">Paid</span>
+          </div>
+
+          <div class="contributor-item">
+            <div class="c-avatar" style="background:#FCE4EC;color:var(--rose);">R</div>
+            <div style="flex:1;"><div class="c-name">Raj</div><div class="c-status">Contributed</div></div>
+            <div class="c-amount">₹800</div>
+            <span class="tag tag-green" style="margin-left:6px;">Paid</span>
+          </div>
+
+          <div class="contributor-item">
+            <div class="c-avatar" style="background:#FFF8E7;color:var(--gold);">M</div>
+            <div style="flex:1;"><div class="c-name">Meera</div><div class="c-status">Contributed</div></div>
+            <div class="c-amount">₹600</div>
+            <span class="tag tag-green" style="margin-left:6px;">Paid</span>
+          </div>
+
+          <div class="contributor-item" style="border:2px dashed var(--sand);border-radius:var(--r12);margin:0 10px 8px;background:transparent;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:300;color:var(--ink4);">＋</div>
+            <div style="font-size:12px;color:var(--ink4);">Invite more friends</div>
+            <div style="margin-left:auto;font-size:12px;color:var(--g1);font-weight:700;">Share link</div>
+          </div>
+
+          <div style="padding:0 10px 8px;"><button class="btn btn-green">Order Now (₹1,399 remaining)</button></div>
+          <div style="padding:0 10px 16px;"><button class="btn btn-outline-g">Share collection link 🔗</button></div>
+        </div>
+        <div class="btmnav">
+          <div class="bni"><span class="ic">🏠</span><span>Home</span></div>
+          <div class="bni"><span class="ic">✦</span><span>AI Gift</span></div>
+          <div class="bni on"><span class="ic">📦</span><span>Orders</span></div>
+          <div class="bni"><span class="ic">⭐</span><span>Rewards</span></div>
+          <div class="bni"><span class="ic">👤</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contributor invite view -->
+    <div class="screen-col">
+      <div class="screen-label">Contributor View</div>
+      <div class="phone tall">
+        <div class="status" style="background:#1A237E;"><div class="status-notch"></div><span class="status-time" style="color:rgba(255,255,255,.8);">9:41</span><span class="status-icons" style="color:rgba(255,255,255,.6);">▐▐▐ ▊</span></div>
+        <div class="scrollarea">
+          <!-- Shared link landing -->
+          <div style="background:linear-gradient(160deg,#1A237E,#283593);padding:24px 16px;text-align:center;color:white;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:8px;">🌸 FNP</div>
+            <div style="font-size:11px;opacity:.5;margin-bottom:16px;">Group Gift Invitation</div>
+            <div style="width:60px;height:60px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px;">🎁</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:4px;">Priya's Birthday Gift</div>
+            <div style="font-size:11px;opacity:.7;margin-bottom:16px;">Organised by Aisha · 16 Jul 2025</div>
+            <div style="background:rgba(255,255,255,.12);border-radius:var(--r12);padding:12px;margin-bottom:16px;text-align:left;">
+              <div style="font-size:12px;font-weight:700;margin-bottom:6px;">Luxury Hamper — Gold 🎁</div>
+              <div style="height:6px;background:rgba(255,255,255,.2);border-radius:3px;margin-bottom:4px;"><div style="width:60%;height:100%;background:var(--g3);border-radius:3px;"></div></div>
+              <div style="font-size:10px;opacity:.7;">₹2,100 of ₹3,499 collected · 3 contributors</div>
+            </div>
+          </div>
+
+          <div style="background:white;padding:16px;">
+            <div style="font-size:13px;font-weight:700;text-align:center;margin-bottom:14px;">Choose your contribution</div>
+            <!-- Amount selection -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+              <div style="border:1.5px solid var(--sand);border-radius:var(--r12);padding:12px;text-align:center;cursor:pointer;">
+                <div style="font-size:16px;font-weight:700;color:var(--g1);">₹200</div>
+                <div style="font-size:10px;color:var(--ink4);">Quick share</div>
+              </div>
+              <div style="border:1.5px solid var(--sand);border-radius:var(--r12);padding:12px;text-align:center;cursor:pointer;">
+                <div style="font-size:16px;font-weight:700;color:var(--g1);">₹500</div>
+                <div style="font-size:10px;color:var(--ink4);">Good share</div>
+              </div>
+              <div style="border:2px solid var(--g1);border-radius:var(--r12);padding:12px;text-align:center;cursor:pointer;background:var(--g5);">
+                <div style="font-size:16px;font-weight:700;color:var(--g1);">₹700</div>
+                <div style="font-size:10px;color:var(--g2);font-weight:600;">Popular 🔥</div>
+              </div>
+              <div style="border:1.5px solid var(--sand);border-radius:var(--r12);padding:12px;text-align:center;cursor:pointer;">
+                <div style="font-size:16px;font-weight:700;color:var(--ink3);">Custom</div>
+                <div style="font-size:10px;color:var(--ink4);">Enter amount</div>
+              </div>
+            </div>
+            <button class="btn btn-green" style="margin-bottom:8px;">Pay ₹700 Contribution →</button>
+            <div style="text-align:center;font-size:11px;color:var(--ink4);">Secure payment · UPI / Card / Wallet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div style="height:60px;"></div>
+
+<script>
+// Show/hide sections
+function showSection(id) {
+  // Update nav pills
+  document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Show/hide sections
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('section-' + id);
+  if (target) {
+    target.classList.add('active');
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Midnight slot toggle
+function toggleSlotTab(btn, group) {
+  const container = btn.closest('.slot-tabs');
+  container.querySelectorAll('.slot-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// Initialize — show overview
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('section-overview').classList.add('active');
+});
+</script>
+</body>
+</html>
